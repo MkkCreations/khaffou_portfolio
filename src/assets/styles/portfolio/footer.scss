@@ -1,0 +1,17 @@
+.footer {
+    height: 2vh;
+    text-align: center;
+    font-size: 0.8em;
+    color: #02c6c635;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    & > a {
+        color: #02c6c635;
+        text-decoration: none;
+        &:hover {
+            color: #02c6c6;
+        }
+    }
+}

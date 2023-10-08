@@ -1,0 +1,161 @@
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: #000000c0;
+
+    &__container {
+        width: 50%;
+        max-width: 500px;
+        min-height: fit-content;
+        position: absolute;
+        background-color: #18396e;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        z-index: 100;
+
+        &__form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+
+            & > h3 {
+                width: 100%;
+                color: #ffffff;
+                font-size: 1.5em;
+                margin: 0;
+                font-weight: bold;
+                text-align: center;
+                border-bottom: 1px solid #ffffff;
+            }
+
+            &__input-container {
+                & > label {
+                    width: 100%;
+                    color: #ffffff;
+                    margin: 0;
+                    font-weight: bold;
+                    text-align: left;
+                }
+                & > input {
+                    width: 100%;
+                    height: 40px;
+                    border-radius: 5px;
+                    border: none;
+                    padding: 0 10px;
+                    font-size: 1.2em;
+                    background-color: #ffffff1a;
+                    color: #ffffff;
+                    outline: none;
+
+                    &[type="file"] {
+                        background-color: unset;
+                        color: #ffffff;
+                        padding: 0 10px;
+                        height: unset;
+                        width: unset;
+                        cursor: pointer;
+                        
+                        &::-webkit-file-upload-button {
+                            border: none;
+                            border-radius: 5px;
+                            padding: 0 10px;
+                            background-color: #ffffff1a;
+                            color: #ffffff;
+                            outline: none;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: #ffffff3a;
+                            }
+                        }
+                    }
+
+                }
+                & > textarea {
+                    width: 100%;
+                    min-height: 80px;
+                    border-radius: 5px;
+                    border: none;
+                    padding: 10px;
+                    font-size: 1.2em;
+                    background-color: #ffffff1a;
+                    color: #ffffff;
+                    outline: none;
+                }
+                & > button {
+                    width: 40%;
+                    height: 30px;
+                    border-radius: 5px;
+                    border: none;
+                    padding: 0 10px;
+                    background-color: #ffffff1a;
+                    color: #ffffff;
+                    margin-left: 10px;
+                    outline: none;
+                    cursor: pointer;
+
+                    &:first-of-type {
+                        background-color: unset;
+                    }
+                    &:hover {
+                        background-color: #ffffff3a;
+                    }
+                }
+
+                &__images {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    margin-bottom: 20px;
+
+                    & > div {
+                        width: 20%;
+                        position: relative;
+                        & > img {
+                            width: 100%;
+                            &:hover {
+                                & ~ .modal__container__form__input-container__images__delete {
+                                    display: unset;
+                                }
+                            }
+                            
+                        }
+                    }
+                    &__delete {
+                        width: 40px !important;
+                        position: absolute;
+                        top: 50%;
+                        right: 50%;
+                        transform: translate(50%, -50%);
+                        background-color: #ed05054f;
+                        color: #ffffff;
+                        padding: 5px;
+                        border-radius: 50%;
+                        display: none;
+
+                        &:hover {
+                            display: unset;
+                            background-color: #ed0505a3;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

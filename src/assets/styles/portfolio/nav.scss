@@ -1,0 +1,71 @@
+.navbar {
+    background-color: #0b1930;
+    padding-left: 40px;
+    transform: translate(0vw, -100vh);
+    animation: lateral 1s forwards;
+    animation-fill-mode: both;
+    min-height: 6vh;
+
+    &-brand {
+        color: #048b8b;
+        font-family: lobster;
+        font-size: 1.4em;
+
+        &:hover {
+            background: linear-gradient(45deg, rgba(98, 9, 116, 0.781), rgba(11, 72, 80, 0.788));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        &:focus {
+            background: rgb(4, 139, 139);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+    }
+
+    &__link {
+        color: #64ffda;
+        font-family: 'Courier New', Courier, monospace;
+        padding: 8px;
+        text-decoration: none;
+    }
+
+    &-toggler {
+        border: none;
+
+        &-icon {
+            width: 35px;
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(4, 139,139)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+    }
+    &-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        & > li {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+
+li:hover .navbar__link {
+    color: rgb(215, 215, 215);
+    border-bottom: 1px solid rgb(215, 215, 215);
+
+}
+
+li.active .navbar__link {
+    color: rgb(8, 128, 184);
+    border-bottom: 1px solid rgb(8, 128, 184);
+
+}
+
+@keyframes lateral {
+    to {
+        transform: translate(0,0);
+    }
+}

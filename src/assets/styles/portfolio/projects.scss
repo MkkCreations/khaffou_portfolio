@@ -22,29 +22,38 @@
         }
     }
     &__projects {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
         &__item {
             display: flex;
             height: 50vh;
             width: calc(100vw - 273px);
             color: #b9cfeab6;
             padding-right: 20px;
-            margin-bottom: 80px;
             text-align: right;
             &:nth-child(odd), &:nth-child(odd) a, &:nth-child(odd) article div {
                 flex-direction: row-reverse;
-                left: -100px;
                 text-align: left;
             }
+            &:nth-child(odd) span {
+                right: unset;
+                left: -100px;
+            }
             &__img {
+                flex: 1;
                 width: 100%;
                 min-width: 300px;
                 max-width: 900px;
-                height: 100%;
+                height: 70%;
                 min-height: 200px;
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
                 position: relative;
+                right: -100px;
                 border-radius: 5px;
                 filter: opacity(0.4);
                 text-decoration: none;
@@ -56,6 +65,7 @@
                 align-items: center;
                 font-size: 2em;
                 font-weight: 700;
+                box-shadow: 5px 10px 60px 0px #00000076;
                 &:hover{
                     filter: opacity(1);
                     transition: all 0.5s ease;
@@ -99,33 +109,35 @@
                     }
                 }
             }
-            & > a {
-                text-decoration: none;
-                color: unset;
-                cursor: pointer;
-            }
             &__article {
+                flex: 1;
+                position: relative;
                 z-index: 2;
                 max-width: 800px;
+                
                 & > h3 {
                     color: #ccd6f6;
                     font-family: Fredoka;
                 }
-                & > div {
-                    background-color: #152f58;
-                    padding: 15px;
-                    font-size: 1.1em;
-                    font-family: Fredoka;
-                    font-weight: 400;
-                    & > p {
-                        margin: 0;
-                        color: #dcd8dd;
+                & > a {
+                    text-decoration: none;
+                    color: unset;
+                    & > div {
+                        background-color: #152f58;
+                        padding: 15px;
+                        font-size: 1.1em;
+                        font-family: Fredoka;
+                        font-weight: 400;
+                        & > p {
+                            margin: 0;
+                            color: #dcd8dd;
+                        }
                     }
-                }
-                & > p {
-                    word-spacing:30px;
-                    background-color: #4d046887;
-                    text-align: center;
+                    & > p {
+                        word-spacing:30px;
+                        background-color: #4d046887;
+                        text-align: center;
+                    }
                 }
             }
         }

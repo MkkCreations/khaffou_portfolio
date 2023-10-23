@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { projectsSelector } from "../../store/selectors/project.selector"
 import { useDispatch, useSelector } from "react-redux"
 import arrowRight from '../../assets/svg/arrow-right.svg'
@@ -6,17 +6,22 @@ import arrowLeft from '../../assets/svg/arrow-left.svg'
 import { PROJECTS_URL } from "../../constants/httpConstants"
 import { getProjects } from "../../store/actions/project.action"
 import { useAuth } from "../../context/authContext"
+import Loader from "./loader"
 
 export const Projects = () => {
     const { http } = useAuth()
+    const [load, setLoad] = React.useState(false)
+    const [loading, setLoading] = React.useState(false)
     const projects = useSelector(projectsSelector)
     const dispatch = useDispatch()
 
     const fetchProjects = async () => {
+        setLoad(true)
+        setLoading(true)
         await http.get(PROJECTS_URL)
             .then(res => {
                 dispatch(getProjects(res.data))
-                return res.data
+                setLoad(false)
             })
             .catch(err => {
                 console.log(err)
@@ -24,23 +29,27 @@ export const Projects = () => {
     }
 
     React.useEffect(() => {
-        fetchProjects()
+        if (projects.length === 0) fetchProjects()
     }, [])
     
     return (
         <div className='projects-container'>
             <h3><hr/>My Projects <hr/></h3>
             <div className="projects-container__projects">
-                {projects.map((project, index) => (
-                    <ProjectView key={index} project={project} />
-                ))}
+                {loading ? 
+                    <Loader load={load} setLoading={setLoading} />
+                    :
+                    projects.reverse().map((project, index) => (
+                        <ProjectView key={index} project={project} />
+                    ))
+                }
             </div>
         </div>
     )
 }
 
 const ProjectView = ({ project }) => {
-    const [img, setImg] = React.useState(project?.images[0])
+    const [img, setImg] = useState(project?.images[0])
 
     return (
         <div className="projects-container__projects__item">
@@ -72,9 +81,9 @@ const ProjectView = ({ project }) => {
                         </>
                     }
             </span>
-            <a href={project.url} target='_blank' rel='noreferrer'>
-                <article className='projects-container__projects__item__article'>
-                    <h3>{project.title}</h3>
+            <article className='projects-container__projects__item__article'>
+                <h3>{project.title}</h3>
+                <a href={project.url} target='_blank' rel='noreferrer'>
                     <div>
                         <p>
                             {project.description}
@@ -85,9 +94,8 @@ const ProjectView = ({ project }) => {
                             <span key={index}>{tech} </span>
                         ))}
                     </p>
-                    
-                </article>
-            </a>
+                </a>
+            </article>
         </div>
     )
 }

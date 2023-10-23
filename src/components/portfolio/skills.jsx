@@ -4,17 +4,22 @@ import { useDispatch, useSelector } from "react-redux"
 import { getSkills } from "../../store/actions/skill.action"
 import { SKILLS_URL } from "../../constants/httpConstants"
 import { useAuth } from "../../context/authContext"
+import Loader from "./loader"
 
 export const Skills = () => {
-    const { http } = useAuth()
+    const { http, user, profile } = useAuth()
+    const [load, setLoad] = React.useState(false)
+    const [loading, setLoading] = React.useState(false)
     const skills = useSelector(skillsSelector)
     const dispatch = useDispatch()
 
     const fetchSkills = async () => {
+        setLoad(true)
+        setLoading(true)
         await http.get(SKILLS_URL)
             .then(res => {
                 dispatch(getSkills(res.data))
-                return res.data
+                setLoad(false)
             })
             .catch(err => {
                 console.log(err)
@@ -22,22 +27,27 @@ export const Skills = () => {
     }
 
     React.useEffect(() => {
-        fetchSkills()
+        if (skills.length === 0) fetchSkills()
+        profile()
     }, [])
 
     return (
         <div className='skills-container'>
             <h3><hr/> My Skills <hr/></h3>
             <p>Scroll -----&gt; and hover</p>
-            <span>
-                <a id='pdflink' href={"/"} target="_blank" rel='noreferrer'>Resume</a>
-            </span>
-            <section className="skills-container__skills">
-                {skills.map((skill, i) => <Skill key={i} skill={skill} />)}
-            </section>
-            <section className="skills-container__skills">
-                {skills.map((skill, i) => <Skill key={i} skill={skill} />)}
-            </section>
+            {
+                loading ? 
+                    <Loader load={load} setLoading={setLoading} />
+                    :
+                    <>
+                        <span>
+                            <a download={"resume.pdf"} id="pdflink" href={user ? user.resume : "/"} >Resume</a>
+                        </span>
+                        <section className="skills-container__skills">
+                            {skills.map((skill, i) => <Skill key={i} skill={skill} />)}
+                        </section>
+                    </>
+            }
         </div>
     )
 }

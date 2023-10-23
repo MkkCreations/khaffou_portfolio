@@ -9,6 +9,7 @@
 @import 'portfolio/projects';
 @import 'portfolio/contact';
 @import 'portfolio/login';
+@import 'portfolio/loader';
 @import 'admin/admin';
 @import 'admin/modal';
 
@@ -69,6 +70,13 @@ h3 {
         text-align: center;
     }
 
+    div .admin-container__user__info {
+        width: 100%;
+        & > p{
+            width: 100%;
+        }
+    }
+
     div .modal__container {
         width: 80%;
     }
@@ -89,6 +97,14 @@ h3 {
     }
 
     div .admin-container {
+        &__navbar {
+            width: 80%;
+            & > ul {
+                flex-direction: column;
+                justify-content: center;
+                text-align: left;
+            }
+        }
         &__skills, &__projects {
             &__item {
                 flex-direction: column;

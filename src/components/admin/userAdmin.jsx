@@ -3,15 +3,15 @@ import { useAuth } from "../../context/authContext"
 import editIcon from "../../assets/images/editar-60.png"
 import UserModal from "./modal/userModal"
 import avatar from "../../assets/images/avatar-90.png"
+import Loader from "../portfolio/loader"
 
 const UserAdmin = () => {
-    const { user, profile } = useAuth()
+    const { user, profile, loading, setLoading } = useAuth()
     const [isActive, setIsActive] = useState(false)
 
     useEffect(() => {
         profile()
     }, [])
-
 
     return (
         <article className="admin-container__user">
@@ -19,7 +19,9 @@ const UserAdmin = () => {
             {
                 isActive && <UserModal setIsActive={setIsActive} />
             }
-            {
+            {loading ?
+                <Loader load={loading} setLoading={setLoading} />
+                :
                 user &&
                 <div className="admin-container__user__info">
                     <p>

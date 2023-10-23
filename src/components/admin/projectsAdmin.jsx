@@ -22,10 +22,32 @@ const ProjectsAdmin = () => {
             })
             .catch(err => {console.log(err)})
     }
+
+   /*  const handleOrder = (array, oldIndex, newIndex) => {
+        const newArray = [...array]
+        console.log(array)
+        newArray[oldIndex].index = Number(newIndex)
+        newArray[newIndex].index = Number(oldIndex)
+        console.log(newArray)
+
+        updateProject(newArray[oldIndex])
+        updateProject(newArray[newIndex])
+
+        return newArray
+    }
+
+    const updateProject = async (project) => {
+        await http.put(`${PROJECTS_URL}/${project.id}`, {
+            ...project
+        })
+            .then(res => {console.log(res)})
+            .catch(err => {console.log(err)})
+    } */
     
     useEffect(() => {
-        fetchProjects()
-    }, [isActive])
+        if (projects.length === 0) fetchProjects()
+    }, [isActive, projects])
+
     return (
         <article className="admin-container__projects">
             <span><h3>Projects</h3> <p onClick={() => setIsActive(!isActive)}>+</p></span>
@@ -35,7 +57,25 @@ const ProjectsAdmin = () => {
             <ul>
                 {
                     projects.map((project, i) => 
-                        <Project key={i} project={project} />
+                        <li 
+                            className="admin-container__projects__item"
+                            /* key={i + 1}
+                            draggable
+                            onDragStart={(e) => {
+                                e.dataTransfer.setData('index', i)
+                            }}
+                            onDragOver={(e) => {
+                                e.preventDefault()
+                            }}
+                            onDrop={(e) => {
+                                const oldIndex = e.dataTransfer.getData('index')
+                                const newIndex = i
+                                const newArray = handleOrder(projects, oldIndex, newIndex)
+                                dispatch(getProjects(newArray))
+                            }} */
+                        >
+                            <Project key={i} project={project} i={i} />
+                        </li>
                     )
                 }
             </ul>
@@ -46,16 +86,6 @@ const ProjectsAdmin = () => {
 const Project = ({project}) => {
     const { http } = useAuth()
     const [isActive, setIsActive] = React.useState(false)
-
-    const onChange = (e) => {
-        console.log(project)
-        http.put(`${PROJECTS_URL}/${project.id}`, {
-            ...project,
-            [e.target.name]: e.target.value
-        })
-            .then(res => {console.log(res)})
-            .catch(err => {console.log(err)})
-    }
 
     const onDelete = () => {
         http.delete(`${PROJECTS_URL}/${project.id}`)
@@ -72,7 +102,6 @@ const Project = ({project}) => {
             {
                 isActive && <ProjectModal project={project} setIsActive={setIsActive} />
             }
-            <li className="admin-container__projects__item">
                 <img 
                     className="admin-container__projects__item__icon" 
                     src={project.images[0]} 
@@ -98,7 +127,6 @@ const Project = ({project}) => {
                         onClick={onDelete}
                     />
                 </div>
-            </li>
         </>
     )
 }

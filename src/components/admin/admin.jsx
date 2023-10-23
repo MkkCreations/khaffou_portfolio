@@ -4,6 +4,8 @@ import SkillsAdmin from "./skillsAdmin"
 import ProjectsAdmin from "./projectsAdmin"
 import MessagesAdmin from "./messagesAdmin"
 import UserAdmin from "./userAdmin"
+import LogsAdmin from "./logsAdmin"
+import { ResumeAdmin } from "./resumeAdmin"
 
 export const Admin = () => {
     const { user, profile } = useAuth()
@@ -12,6 +14,10 @@ export const Admin = () => {
         {
             name: 'User',
             component: <UserAdmin />
+        },
+        {
+            name: 'Resume',
+            component: <ResumeAdmin />
         },
         {
             name: 'Skills',
@@ -24,6 +30,10 @@ export const Admin = () => {
         {
             name: 'Messages',
             component: <MessagesAdmin />
+        },
+        {
+            name: 'Logs',
+            component: <LogsAdmin />
         }
     ]
     

@@ -12,7 +12,8 @@ export const useAuth = () => {
 }
 
 export function AuthProvider({children}) {
-    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(false)
+    const [user, setUser] = useState(null)
     const [token, setToken] = useState(localStorage.getItem('token')? localStorage.getItem('token') : '')
     const [refreshToken, setRefreshToken] = useState(localStorage.getItem('refreshToken')? localStorage.getItem('refreshToken') : '')
 
@@ -33,6 +34,7 @@ export function AuthProvider({children}) {
     }
 
     const login = (data) => {
+        setLoading(true)
         http.post(LOGIN_URL, data)
             .then(res => {
                 const user = res.data.user
@@ -43,6 +45,7 @@ export function AuthProvider({children}) {
                 setRefreshToken(refreshToken)
                 localStorage.setItem('token', token)
                 localStorage.setItem('refreshToken', refreshToken)
+                setLoading(false)
                 navigate('/admin')
             })
             .catch(err => {
@@ -51,10 +54,12 @@ export function AuthProvider({children}) {
     }
 
     const profile =  () => {
+        setLoading(true)
         http.get(PROFILE_URL)
             .then(res => {
                 console.log(res)
                 setUser(res.data)
+                setLoading(false)
             })
             .catch(err => {
                 console.log(err)
@@ -66,6 +71,7 @@ export function AuthProvider({children}) {
         const data = {
             'refreshToken': refreshToken
         }
+        setLoading(true)
         http.post(REFRESH_URL, data)
             .then(res => {
                 const user = res.data.user
@@ -76,6 +82,7 @@ export function AuthProvider({children}) {
                 setRefreshToken(refreshToken)
                 localStorage.setItem('token', token)
                 localStorage.setItem('refreshToken', refreshToken)
+                setLoading(false)
             })
             .catch(err => {
                 console.log(err)
@@ -89,7 +96,7 @@ export function AuthProvider({children}) {
             'accessToken' : token,
             'refreshToken' : refreshToken
         }
-
+        
         http.post(LOGOUT_URL, data)
             .then(res => {
                 console.log(res)
@@ -108,7 +115,7 @@ export function AuthProvider({children}) {
 
     return (
         
-        <authContext.Provider value={{signup, login, profile, logout, http, user, token, refreshToken, error}}>
+        <authContext.Provider value={{signup, login, profile, logout, setLoading, loading, http, user, token, refreshToken, error}}>
             {children}
         </authContext.Provider>
     )

@@ -11,7 +11,7 @@
     & > h3 {
         display: inline-block;
         color: #b9cfea;
-        font-size: 2.5em;
+        font-size: 2em;
         padding-bottom: 30px;
 
         & > hr {
@@ -30,7 +30,7 @@
             margin: 0;
             padding: 0;
             color: #048b8b;
-            font-size: 1.4em;
+            font-size: 1.2em;
             
             & > li {
                 padding: 0 20px;
@@ -56,7 +56,7 @@
         width: 80%;
     }
 
-    &__skills, &__projects, &__messages, &__user {
+    &__skills, &__projects, &__messages, &__user, &__logs {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -262,5 +262,11 @@
                 }
             }
         }
+    }
+    &__logs__item {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        color: #fff;
     }
 }

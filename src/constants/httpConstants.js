@@ -1,5 +1,5 @@
 
-export const API_URL = 'http://localhost:8080/api'
+export const API_URL = 'https://portfolioserver-production-ba12.up.railway.app:8080/api'
 export const SKILLS_URL = `${API_URL}/skills`
 export const PROJECTS_URL = `${API_URL}/projects`
 export const CONTACT_URL = `${API_URL}/message`

@@ -1,5 +1,5 @@
 
-export const API_URL_VAR = process.env.API_URL || 'http://localhost:8080/api'
+export const API_URL_VAR = process.env.API_URL
 export const SKILLS_URL = `${API_URL_VAR}/skills`
 export const PROJECTS_URL = `${API_URL_VAR}/projects`
 export const CONTACT_URL = `${API_URL_VAR}/message`

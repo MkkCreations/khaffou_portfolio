@@ -57,7 +57,6 @@ export function AuthProvider({children}) {
         setLoading(true)
         http.get(PROFILE_URL)
             .then(res => {
-                console.log(res)
                 setUser(res.data)
                 setLoading(false)
             })
@@ -99,7 +98,6 @@ export function AuthProvider({children}) {
         
         http.post(LOGOUT_URL, data)
             .then(res => {
-                console.log(res)
                 setUser(null)
                 setToken('')
                 setRefreshToken('')

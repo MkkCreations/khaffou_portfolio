@@ -49,14 +49,11 @@ const Skill = ({skill, fetchSkills}) => {
 
     const onDelete = async () => {
         await http.delete(`${SKILLS_URL}/${skill.id}`)
-            .then(res => {console.log(res)})
             .catch(err => {console.log(err)})
         fetchSkills()
     }
 
-    useEffect(() => {
-        console.log(skill)
-    }, [skill])
+    useEffect(() => {}, [skill])
 
     return (
         <>

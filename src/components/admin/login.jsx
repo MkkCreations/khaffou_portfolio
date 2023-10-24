@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/authContext"
 
 export const Login = () => {
-    const {token, refreshToken} = useAuth()
+    const {token} = useAuth()
     const [isActive, setIsActive] = React.useState(false)
     const [form, setForm] = React.useState({
         username: '',
         password: ''
     })
-    const {user, login, profile} = useAuth();
+    const {login, profile} = useAuth();
     const navigate = useNavigate()
 
     const handleChange = (e) => {

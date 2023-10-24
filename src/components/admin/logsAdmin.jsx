@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useAuth } from "../../context/authContext"
 import { LOGS_URL } from "../../constants/httpConstants"
 
@@ -9,13 +9,12 @@ const LogsAdmin = () => {
     const fetchLogs = async () => {
         await http.get(LOGS_URL)
             .then(res => {
-                console.log(res.data)
                 setLogs(res.data)
             })
             .catch(err => {console.log(err)})
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         fetchLogs()
     }, [])
 

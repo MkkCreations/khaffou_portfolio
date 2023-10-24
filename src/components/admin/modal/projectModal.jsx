@@ -56,12 +56,10 @@ const ProjectModal = ({project = null, setIsActive}) => {
             }
             console.log(form)
             await http.put(PROJECTS_URL + `/${project.id}`, data)
-                .then(res => {console.log(res)})
                 .catch(err => {console.log(err)})
         }
         else {
             await http.post(PROJECTS_URL, form)
-                .then(res => {console.log(res)})
                 .catch(err => {console.log(err)})
         }
 

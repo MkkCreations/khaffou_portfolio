@@ -41,12 +41,10 @@ const SkillModal = ({skill = null, setIsActive}) => {
             }
             console.log(form)
             await http.put(SKILLS_URL + `/${skill.id}`, data)
-                .then(res => {console.log(res)})
                 .catch(err => {console.log(err)})
         }
         else {
             await http.post(SKILLS_URL, form)
-                .then(res => {console.log(res)})
                 .catch(err => {console.log(err)})
         }
 

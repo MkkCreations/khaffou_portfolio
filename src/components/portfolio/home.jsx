@@ -17,12 +17,10 @@ export const Home = () => {
     const userRedux = useSelector(userSelector)
 
     const fetchData = async () => {
-        console.log(process.env.REACT_APP_API_URL)
         setLoad(true)
         setLoading(true)
         await http.get(USER_DATA_URL)
             .then(res => {
-                console.log(res.data)
                 const data = res.data
                 setUserData(res.data)
                 dispatch(setUser(data))

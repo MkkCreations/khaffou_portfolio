@@ -89,13 +89,10 @@ const Project = ({project}) => {
 
     const onDelete = () => {
         http.delete(`${PROJECTS_URL}/${project.id}`)
-            .then(res => {console.log(res)})
             .catch(err => {console.log(err)})
     }
 
-    useEffect(() => {
-        console.log(project)
-    }, [project, isActive])
+    useEffect(() => {}, [project, isActive])
 
     return (
         <>

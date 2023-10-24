@@ -38,7 +38,6 @@ export const Contact = () => {
         setLoading(true)
         http.post(CONTACT_URL, form)
             .then(res => {
-                console.log(res.data)
                 setLoad(false)
             })
             .catch(err => {

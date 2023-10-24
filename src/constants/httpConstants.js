@@ -1,5 +1,5 @@
 
-export const API_URL = 'https://${{ portfolio_server.RAILWAY_PUBLIC_DOMAIN }}/api'
+export const API_URL = 'https://${{API_URL}}/api'
 export const SKILLS_URL = `${API_URL}/skills`
 export const PROJECTS_URL = `${API_URL}/projects`
 export const CONTACT_URL = `${API_URL}/message`

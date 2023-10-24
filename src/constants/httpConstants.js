@@ -1,5 +1,5 @@
 
-export const API_URL_VAR = process.env.API_URL
+export const API_URL_VAR = process.env.API_URL || 'https://portfolioserver-production-ba12.up.railway.app/api'
 export const SKILLS_URL = `${API_URL_VAR}/skills`
 export const PROJECTS_URL = `${API_URL_VAR}/projects`
 export const CONTACT_URL = `${API_URL_VAR}/message`

@@ -7,7 +7,7 @@ import { useAuth } from "../../context/authContext"
 import Loader from "./loader"
 
 export const Skills = () => {
-    const { http, user, profile } = useAuth()
+    const { http, user } = useAuth()
     const [load, setLoad] = React.useState(false)
     const [loading, setLoading] = React.useState(false)
     const skills = useSelector(skillsSelector)
@@ -28,7 +28,6 @@ export const Skills = () => {
 
     React.useEffect(() => {
         if (skills.length === 0) fetchSkills()
-        profile()
     }, [])
 
     return (

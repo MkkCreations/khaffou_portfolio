@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../../context/authContext"
-import { USER_URL } from "../../constants/httpConstants"
+import { USER_DATA_URL } from "../../constants/httpConstants"
 import avatar from "../../assets/images/avatar-90.png"
 import { useDispatch, useSelector } from "react-redux"
 import { setUser } from "../../store/actions/user.action"
@@ -19,7 +19,7 @@ export const Home = () => {
     const fetchData = async () => {
         setLoad(true)
         setLoading(true)
-        await http.get(USER_URL + '/data')
+        await http.get(USER_DATA_URL)
             .then(res => {
                 console.log(res.data)
                 const data = res.data

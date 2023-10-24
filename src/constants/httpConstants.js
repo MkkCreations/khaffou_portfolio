@@ -1,5 +1,5 @@
 
-export const API_URL = `${process.env.API_URL}/api`
+export const API_URL = process.env.API_URL
 export const SKILLS_URL = `${API_URL}/skills`
 export const PROJECTS_URL = `${API_URL}/projects`
 export const CONTACT_URL = `${API_URL}/message`

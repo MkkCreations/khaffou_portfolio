@@ -1,14 +1,13 @@
 
-export const API_URL_VAR = process.env.API_URL || 'https://portfolioserver-production-ba12.up.railway.app/api'
-export const SKILLS_URL = `${API_URL_VAR}/skills`
-export const PROJECTS_URL = `${API_URL_VAR}/projects`
-export const CONTACT_URL = `${API_URL_VAR}/message`
-export const AUTH_URL = `${API_URL_VAR}/auth`
-export const LOGIN_URL = `${AUTH_URL}/login`
-export const USER_URL = `${API_URL_VAR}/user`
-export const USER_DATA_URL = `${USER_URL}/data`
-export const PROFILE_URL = `${API_URL_VAR}/user/me`
-export const REGISTER_URL = `${AUTH_URL}/register`
-export const LOGOUT_URL = `${AUTH_URL}/logout`
-export const REFRESH_URL = `${AUTH_URL}/refresh-token`
-export const LOGS_URL = `${API_URL_VAR}/logs`
+export const SKILLS_URL = `${process.env.REACT_APP_API_URL}/skills`
+export const PROJECTS_URL = `${process.env.REACT_APP_API_URL}/projects`
+export const CONTACT_URL = `${process.env.REACT_APP_API_URL}/message`
+export const AUTH_URL = `${process.env.REACT_APP_API_URL}/auth`
+export const LOGIN_URL = `${process.env.REACT_APP_API_URL}/auth/login`
+export const USER_URL = `${process.env.REACT_APP_API_URL}/user`
+export const USER_DATA_URL = `${process.env.REACT_APP_API_URL}/user/data`
+export const PROFILE_URL = `${process.env.REACT_APP_API_URL}/user/me`
+export const REGISTER_URL = `${process.env.REACT_APP_API_URL}/auth/register`
+export const LOGOUT_URL = `${process.env.REACT_APP_API_URL}/auth/logout`
+export const REFRESH_URL = `${process.env.REACT_APP_API_URL}/auth/refresh-token`
+export const LOGS_URL = `${process.env.REACT_APP_API_URL}/logs`

@@ -3,6 +3,7 @@ const config = require('../portal.config')
 const loaders = require('./webpack.loaders')
 const plugins = require('./webpack.plugins')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+
 const webpackConf = {
 	entry: path.join(__dirname, '..', config.paths.src, 'index.js'),
 	output: {

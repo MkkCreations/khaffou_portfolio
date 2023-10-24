@@ -1,5 +1,5 @@
 import React, { createContext,useContext, useState } from "react";
-import { API_URL_VAR, LOGIN_URL, LOGOUT_URL, PROFILE_URL, REFRESH_URL } from "../constants/httpConstants";
+import { LOGIN_URL, LOGOUT_URL, PROFILE_URL, REFRESH_URL } from "../constants/httpConstants";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -18,7 +18,7 @@ export function AuthProvider({children}) {
     const [refreshToken, setRefreshToken] = useState(localStorage.getItem('refreshToken')? localStorage.getItem('refreshToken') : '')
 
     const http = axios.create({
-        baseURL: API_URL_VAR,
+        baseURL: process.env.API_URL,
         headers: {
           "Content-type": "application/json",
           "Access-Control-Allow-Origin": "*",

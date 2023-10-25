@@ -3,9 +3,8 @@
     flex-wrap: wrap-reverse;
     gap: 40px;
     width: calc(100% - 160px);
-    min-height: 90vh;
+    min-height: calc(100vh - 100px);
     margin-left: auto;
-    margin-bottom: 20px;
     justify-content: flex-start;
     align-items: flex-end;
     padding: 10% 6% 0 1%;

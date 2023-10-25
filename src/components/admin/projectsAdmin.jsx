@@ -17,7 +17,7 @@ const ProjectsAdmin = () => {
     const fetchProjects = async () => {
         await http.get(PROJECTS_URL)
             .then(res => {
-                dispatch(getProjects(res.data))
+                dispatch(getProjects(res.data.reverse()))
                 return res.data
             })
             .catch(err => {console.log(err)})

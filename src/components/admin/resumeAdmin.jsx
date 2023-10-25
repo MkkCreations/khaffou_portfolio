@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import editIcon from "../../assets/images/editar-60.png"
-import Loader from "../portfolio/loader"
+import Loader from "../../common/loader"
 import { useAuth } from "../../context/authContext"
 import { ResumeModal } from "./modal/resumeModal"
 

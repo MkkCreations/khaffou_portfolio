@@ -6,7 +6,7 @@ import arrowLeft from '../../assets/svg/arrow-left.svg'
 import { PROJECTS_URL } from "../../constants/httpConstants"
 import { getProjects } from "../../store/actions/project.action"
 import { useAuth } from "../../context/authContext"
-import Loader from "./loader"
+import Loader from "../../common/loader"
 
 export const Projects = () => {
     const { http } = useAuth()
@@ -20,7 +20,7 @@ export const Projects = () => {
         setLoading(true)
         await http.get(PROJECTS_URL)
             .then(res => {
-                dispatch(getProjects(res.data))
+                dispatch(getProjects(res.data.reverse()))
                 setLoad(false)
             })
             .catch(err => {
@@ -39,7 +39,7 @@ export const Projects = () => {
                 {loading ? 
                     <Loader load={load} setLoading={setLoading} />
                     :
-                    projects.reverse().map((project, index) => (
+                    projects.map((project, index) => (
                         <ProjectView key={index} project={project} />
                     ))
                 }

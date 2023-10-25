@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useAuth } from "../../context/authContext"
 import { USER_DATA_URL } from "../../constants/httpConstants"
@@ -6,13 +6,13 @@ import avatar from "../../assets/images/avatar-90.png"
 import { useDispatch, useSelector } from "react-redux"
 import { setUser } from "../../store/actions/user.action"
 import { userSelector } from "../../store/selectors/user.selector"
-import Loader from "../portfolio/loader"
+import Loader from "../../common/loader"
 
 export const Home = () => {
     const { http } = useAuth()
-    const [load, setLoad] = React.useState(false)
-    const [loading, setLoading] = React.useState(false)
-    const [userData, setUserData] = React.useState({})
+    const [load, setLoad] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [userData, setUserData] = useState({})
     const dispatch = useDispatch()
     const userRedux = useSelector(userSelector)
 
@@ -29,7 +29,7 @@ export const Home = () => {
             .catch(err => {console.log(err)})
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (userRedux.user) {
             setUserData(userRedux.user)
             return

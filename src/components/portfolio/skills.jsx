@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getSkills } from "../../store/actions/skill.action"
 import { SKILLS_URL } from "../../constants/httpConstants"
 import { useAuth } from "../../context/authContext"
-import Loader from "./loader"
+import Loader from "../../common/loader"
 
 export const Skills = () => {
     const { http, user } = useAuth()

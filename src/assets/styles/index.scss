@@ -24,6 +24,29 @@ h3 {
     font-family: Lato;
 }
 
+.presentation {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0b1930;
+    overflow: hidden ;
+    #counter {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 2em;
+        color: aliceblue;
+    }
+    #box p {
+        display: block;
+        width: 40px;
+        height: 1px;
+        margin: 0;
+        padding: 0;
+        background-color: #048b8b;
+    }
+}
+
 @media screen and (max-width: 760px) {
 
     div .home-container {

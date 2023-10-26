@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/authContext"
+import CryptoJS from "crypto-js"
 
 export const Login = () => {
     const {token} = useAuth()
@@ -25,11 +26,16 @@ export const Login = () => {
         setTimeout(() => {
             setIsActive(false)
         }, 3000)
+
+        const data = {
+            "username": form.username,
+            "password": CryptoJS.SHA512(form.password).toString()
+        }
         setForm({
             username: '',
             password: ''
         })
-        login(form)
+        login(data)
     }
 
     useEffect(() => {

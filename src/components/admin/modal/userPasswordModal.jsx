@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { useAuth } from "../../../context/authContext"
 import { CHANGE_PASSWORD_URL } from "../../../constants/httpConstants"
+import CryptoJS from "crypto-js"
+
 
 const UserPasswordModal = ({ setIsActive }) => {
     const { http, user } = useAuth()
@@ -55,8 +57,15 @@ const UserPasswordModal = ({ setIsActive }) => {
         if (error.confirmPassword || error.newPassword) {
             return
         }
+
+        const data = {
+            "actualPassword": CryptoJS.SHA512(form.actualPassword).toString(),
+            "newPassword": CryptoJS.SHA512(form.newPassword).toString(),
+            "confirmPassword": CryptoJS.SHA512(form.confirmPassword).toString()
+        }
+        
         setError({...error, httpError: null})
-        await http.put(CHANGE_PASSWORD_URL + `/${user.id}`, form)
+        await http.put(CHANGE_PASSWORD_URL + `/${user.id}`, data)
             .then(() => {
                 setIsActive(false)
             })

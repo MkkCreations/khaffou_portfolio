@@ -4,10 +4,12 @@ import editIcon from "../../assets/images/editar-60.png"
 import UserModal from "./modal/userModal"
 import avatar from "../../assets/images/avatar-90.png"
 import Loader from "../../common/loader"
+import UserPasswordModal from "./modal/userPasswordModal"
 
 const UserAdmin = () => {
     const { user, profile, loading, setLoading } = useAuth()
-    const [isActive, setIsActive] = useState(false)
+    const [activeEdit, setActiveEdit] = useState(false)
+    const [activeEditPassword, setActiveEditPassword] = useState(false)
 
     useEffect(() => {
         profile()
@@ -15,10 +17,23 @@ const UserAdmin = () => {
 
     return (
         <article className="admin-container__user">
-            <span><h3>User</h3> <p onClick={() => {setIsActive(!isActive)}}><img src={editIcon} alt="edit" /></p></span>
+            <span>
+                <h3>User</h3>
+                <div className="admin-container__user__actions">
+                    <h6 onClick={() => { setActiveEditPassword(!activeEditPassword) }}>Change Password</h6>
+                    <p onClick={() => { setActiveEdit(!activeEdit) }}>
+                        <img src={editIcon} alt="edit" />
+                    </p>
+                </div>
+            </span>
+
             {
-                isActive && <UserModal setIsActive={setIsActive} />
+                activeEdit && <UserModal setIsActive={setActiveEdit} />
             }
+            {    
+                activeEditPassword && <UserPasswordModal setIsActive={setActiveEditPassword} />
+            }
+
             {loading ?
                 <Loader load={loading} setLoading={setLoading} />
                 :
@@ -52,11 +67,11 @@ const UserAdmin = () => {
                     <p><strong>Address:</strong>
                         {user.location}
                     </p>
-                    
+
                 </div>
             }
 
-            
+
         </article>
     )
 }

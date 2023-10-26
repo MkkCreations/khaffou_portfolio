@@ -26,9 +26,15 @@ const SkillsAdmin = () => {
     useEffect(() => {
         fetchSkills()
     }, [isActive])
+    
     return (
         <article className="admin-container__skills">
-            <span><h3>Skills</h3> <p onClick={() => setIsActive(!isActive)}>+</p></span>
+            <span>
+                <h3>Skills</h3>
+                <div className="admin-container__skills__actions">
+                    <p onClick={() => setIsActive(!isActive)}>+</p>
+                </div>
+            </span>
             {
                 isActive && <SkillModal setIsActive={setIsActive} />
             }

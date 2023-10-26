@@ -1,4 +1,3 @@
-
 .admin-container {
     display: inline-flex;
     flex-direction: column;
@@ -8,13 +7,13 @@
     padding: 5% 0 0 0;
     min-height: calc(100vh - 100px);
 
-    & > h3 {
+    &>h3 {
         display: inline-block;
         color: #b9cfea;
         font-size: 2em;
         padding-bottom: 30px;
 
-        & > hr {
+        &>hr {
             display: inline-block;
             width: 10vw;
             vertical-align: middle;
@@ -24,15 +23,16 @@
     &__navbar {
         width: fit-content;
         margin-bottom: 40px;
-        & > ul {
+
+        &>ul {
             display: flex;
             list-style: none;
             margin: 0;
             padding: 0;
             color: #048b8b;
             font-size: 1.2em;
-            
-            & > li {
+
+            &>li {
                 padding: 0 20px;
                 border-bottom: 2px solid #048b8b;
 
@@ -52,16 +52,21 @@
         }
     }
 
-    & > section {
+    &>section {
         width: 80%;
     }
 
-    &__skills, &__projects, &__messages, &__user, &__logs {
+    &__skills,
+    &__projects,
+    &__messages,
+    &__user,
+    &__logs {
         width: 100%;
         display: flex;
         flex-direction: column;
         margin-bottom: 5%;
-        & > span {
+
+        &>span {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -69,7 +74,26 @@
             color: #048b8b;
             margin-bottom: 20px;
 
-            & > p, & > p > img {
+
+        }
+
+        &__actions {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            &>h6 {
+                margin: 0 20px 0 0;
+                cursor: pointer;
+
+                &:hover {
+                    color: #048b8b3a;
+                }
+            }
+
+            &>p>img,
+            &>p {
                 width: 35px;
                 height: 35px;
                 display: flex;
@@ -86,10 +110,9 @@
                     background-color: #048b8b3a;
                 }
             }
-
         }
 
-        & > ul {
+        &>ul {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -99,6 +122,7 @@
             list-style: none;
             gap: 10px;
         }
+
         &__item {
             display: flex;
             flex-direction: row;
@@ -110,6 +134,7 @@
             padding: 10px;
             background-color: #048b8b2a;
             border-radius: 10px;
+
             &__icon {
                 flex: 1;
                 min-width: 100px;
@@ -117,14 +142,15 @@
                 width: 50px;
                 height: 50px;
             }
-            & > p {
+
+            &>p {
                 flex: 5;
                 color: #fff;
                 text-align: center;
                 background-color: transparent;
                 border: none;
                 margin: 0;
-                
+
                 &:first-of-type {
                     min-width: 100px;
                     font-weight: bold;
@@ -135,17 +161,20 @@
                     font-size: 0.8em;
                 }
             }
-            & > div {
+
+            &>div {
                 flex: 1;
                 display: flex;
                 justify-content: center;
                 gap: 10px;
             }
+
             &__edit {
                 width: 40px;
                 border-radius: 5px;
                 padding: 10px;
                 background-color: #048b8b23;
+
                 &:hover {
                     cursor: pointer;
                     background-color: #048b8bd9;
@@ -158,6 +187,7 @@
                 border-radius: 5px;
                 padding: 10px;
                 background-color: #8b04047b;
+
                 &:hover {
                     cursor: pointer;
                     background-color: #c60909d9;
@@ -175,7 +205,7 @@
         margin: auto;
         gap: 5px;
 
-        & > p {
+        &>p {
             width: 50%;
             display: flex;
             flex-direction: column;
@@ -185,12 +215,13 @@
             padding: 10px;
             text-align: center;
             border-bottom: 1px solid #048b8b56;
-            
-            & > strong {
+
+            &>strong {
                 font-size: 1.2em;
                 color: #048b8b;
             }
-            & > img {
+
+            &>img {
                 width: 100px;
                 height: 100px;
                 border-radius: 50%;
@@ -201,18 +232,22 @@
     }
 
     &__messages {
-        & > table {
+        &>table {
             text-align: center;
-            & > thead {
+
+            &>thead {
                 color: #023d3d;
-                & > tr {
-                    & > th {
+
+                &>tr {
+                    &>th {
                         background-color: #048b8b;
                         padding: 10px;
                         border-right: 1px solid #023d3d;
+
                         &:first-of-type {
                             border-top-left-radius: 10px;
                         }
+
                         &:last-of-type {
                             border-right: none;
                             border-top-right-radius: 10px;
@@ -220,14 +255,16 @@
                     }
                 }
             }
-            & > tbody {
-                & > tr {
+
+            &>tbody {
+                &>tr {
                     background-color: #048b8b72;
+
                     &:nth-of-type(odd) {
                         background-color: #048b8b25;
                     }
 
-                    & > td {
+                    &>td {
                         width: 20%;
                         max-width: 200px;
                         text-wrap: nowrap;
@@ -235,6 +272,7 @@
                         padding: 10px;
                         border-right: 1px solid #048b8b;
                         color: #fff;
+
                         &:last-of-type {
                             border-right: none;
                         }
@@ -244,16 +282,18 @@
                             overflow: visible;
                         }
                     }
-                    
+
                     &:hover {
                         cursor: pointer;
                         background-color: #18396e;
                     }
+
                     &:last-of-type {
-                        & > td {
+                        &>td {
                             &:first-of-type {
                                 border-bottom-left-radius: 10px;
                             }
+
                             &:last-of-type {
                                 border-bottom-right-radius: 10px;
                             }
@@ -263,6 +303,7 @@
             }
         }
     }
+
     &__logs__item {
         display: flex;
         justify-content: space-between;

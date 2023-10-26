@@ -19,9 +19,24 @@ const environements = new Dotenv({
 const clean = new CleanWebpackPlugin()
 
 // HTML generation
-const generateHTML = new HtmlWebpackPlugin({
-	template: './public/index.html'
-})
+const generateHTML = new HtmlWebpackPlugin(
+	{
+		template: './public/index.html',
+		filename: 'index.html',
+		favicon: './public/favicon.ico',
+	}, 
+	process.env.NODE_ENV === 'production' ? 
+	{
+		minify: {
+			collapseWhitespace: true,
+			removeComments: true,
+			removeRedundantAttributes: true,
+			removeScriptTypeAttributes: true,
+			removeStyleLinkTypeAttributes: true,
+			useShortDoctype: true,
+		}
+	} : {}
+)
 
 const copyAssets = new CopyPlugin({
 	patterns: [

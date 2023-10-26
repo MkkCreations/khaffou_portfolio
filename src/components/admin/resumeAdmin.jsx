@@ -5,12 +5,20 @@ import { useAuth } from "../../context/authContext"
 import { ResumeModal } from "./modal/resumeModal"
 
 export const ResumeAdmin = () => {
-    const { user, profile, loading, setLoading } = useAuth()
+    const { user, loading, setLoading } = useAuth()
     const [isActive, setIsActive] = useState(false)
 
     return (
         <article className="admin-container__user">
-            <span><h3>Resume</h3> <p onClick={() => {setIsActive(!isActive)}}><img src={editIcon} alt="edit" /></p></span>
+            <span>
+                <h3>Resume</h3>
+                <div className="admin-container__user__actions">
+                    <p onClick={() => { setIsActive(!isActive) }}>
+                        <img src={editIcon} alt="edit" />
+                    </p>
+                </div>
+            </span>
+
             {
                 isActive && <ResumeModal setIsActive={setIsActive} />
             }
@@ -18,7 +26,7 @@ export const ResumeAdmin = () => {
                 <Loader load={loading} setLoading={setLoading} />
                 :
                 user &&
-                    <embed src={user.resume} width="100%" height="1000px" />
+                <embed src={user.resume} width="100%" height="1000px" />
 
             }
         </article>

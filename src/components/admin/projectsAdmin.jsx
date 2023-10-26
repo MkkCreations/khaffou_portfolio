@@ -50,7 +50,12 @@ const ProjectsAdmin = () => {
 
     return (
         <article className="admin-container__projects">
-            <span><h3>Projects</h3> <p onClick={() => setIsActive(!isActive)}>+</p></span>
+            <span>
+                <h3>Projects</h3>
+                <div className="admin-container__projects__actions">
+                    <p onClick={() => setIsActive(!isActive)}>+</p>
+                </div>
+            </span>
             {
                 isActive && <ProjectModal setIsActive={setIsActive} />
             }

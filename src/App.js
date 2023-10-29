@@ -15,7 +15,7 @@ import { ProtectedRoute } from './context/protectedRoute'
 import Presentation from './common/presentation'
 
 function App() {
-    const [load, setLoad] = useState(true)
+    const [load, setLoad] = useState(false)
 
     useEffect(() => {
         setTimeout(()=>{

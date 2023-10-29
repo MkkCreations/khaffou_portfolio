@@ -166,5 +166,94 @@
             }
 
         }
+        &__logs {
+            width: 100%;
+            padding: 20px;
+
+            &>h3 {
+                text-align: center;
+                color: #ffffff;
+            }
+            
+            &>ul {
+                max-height: 70vh;
+                overflow-y: scroll;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                &>li {
+                    flex: 1;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    color: #fff;
+                    background-color: #023d3d;
+                    padding: 10px;
+                    border-radius: 5px;
+    
+                    &>text {
+                        text-wrap: nowrap;
+                        font-size: 0.8em;
+                    }
+                    &:hover {
+                        background-color: #18396e;
+                        cursor: pointer;
+                    }
+                }
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+            &>button {
+                width: 40%;
+                height: 30px;
+                border-radius: 5px;
+                border: none;
+                padding: 0 10px;
+                background-color: #ffffff1a;
+                color: #ffffff;
+                margin: 20px 0 0 0;
+                outline: none;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #ffffff3a;
+                }
+            }
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        &__confirm {
+            padding: 20px;
+            &>h3 {
+                text-align: center;
+                color: #ffffff;
+                font-size: 1.2em;
+            }
+            
+            &>div>button {
+                width: 40%;
+                height: 30px;
+                border-radius: 5px;
+                border: none;
+                padding: 0 10px;
+                background-color: #ffffff1a;
+                color: #ffffff;
+                margin: 20px 0 0 10px;
+                outline: none;
+                cursor: pointer;
+
+                &:first-of-type {
+                    background-color: unset;
+                }
+                &:hover {
+                    background-color: #ffffff3a;
+                }
+            }
+        }
     }
 }

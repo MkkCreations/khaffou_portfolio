@@ -63,6 +63,7 @@ const ProjectsAdmin = () => {
                 {
                     projects.map((project, i) => 
                         <li 
+                            key={i}
                             className="admin-container__projects__item"
                             /* key={i + 1}
                             draggable
@@ -79,7 +80,7 @@ const ProjectsAdmin = () => {
                                 dispatch(getProjects(newArray))
                             }} */
                         >
-                            <Project key={i} project={project} i={i} />
+                            <Project project={project} i={i} />
                         </li>
                     )
                 }

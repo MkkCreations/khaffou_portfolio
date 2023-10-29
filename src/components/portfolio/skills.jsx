@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { skillsSelector } from "../../store/selectors/skill.selector"
 import { useDispatch, useSelector } from "react-redux"
 import { getSkills } from "../../store/actions/skill.action"
@@ -8,8 +8,8 @@ import Loader from "../../common/loader"
 
 export const Skills = () => {
     const { http, user } = useAuth()
-    const [load, setLoad] = React.useState(false)
-    const [loading, setLoading] = React.useState(false)
+    const [load, setLoad] = useState(false)
+    const [loading, setLoading] = useState(false)
     const skills = useSelector(skillsSelector)
     const dispatch = useDispatch()
 
@@ -26,7 +26,7 @@ export const Skills = () => {
             })
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (skills.length === 0) fetchSkills()
     }, [])
 

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useAuth } from "../../context/authContext"
 import { LOGS_URL } from "../../constants/httpConstants"
+import LogsModal from "./modal/logsModal"
 
 const LogsAdmin = () => {
     const { http } = useAuth()
@@ -24,9 +25,9 @@ const LogsAdmin = () => {
             <ul>
                 {
                     logs.map((log, i) => 
-                        <>
+                        <li>
                             <Log key={i} log={log} />
-                        </>
+                        </li>
                     )
                 }
             </ul>
@@ -35,15 +36,21 @@ const LogsAdmin = () => {
 }
 
 const Log = ({log}) => {
+    const [isActive, setIsActive] = useState(false)
+
     return (
         <>
             {
-                log.operations.map((op, i) =>
-                    <li key={i} className="admin-container__logs__item">
-                        <text style={{color: "green"}}>[ {op.date} ] :</text> <strong>{op.info}</strong>
-                    </li>
-                )
+                isActive && <LogsModal setIsActive={setIsActive} log={log} />
             }
+            <li className="admin-container__logs__item" onClick={() => setIsActive(true)}>
+                <p>{log.name} logs</p>
+                <h6>Last changes:</h6>
+                <div>
+                    <strong>{log.operations[log.operations.length - 1].info}</strong>
+                    <text style={{color: "green"}}>[ {log.operations.reverse()[0].date} ] </text>
+                </div>
+            </li>
         </>
     )
 }

@@ -206,7 +206,7 @@
         gap: 5px;
 
         &>p {
-            width: 50%;
+            width: 80%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -276,7 +276,22 @@
                         &:last-of-type {
                             border-right: none;
                         }
+                        
+                        &>button {
+                            background-color: rgba(199, 38, 38, 0.654);
+                            border: none;
+                            border-radius: 5px;
+                            color: #fff;
+                            font-size: 1em;
+                            padding: 5px;
+                            margin: 0;
 
+                            &:hover {
+                                cursor: pointer;
+                                background-color: #c60909d9;
+                            }
+                        }
+                        
                         &:hover {
                             text-wrap: wrap;
                             overflow: visible;
@@ -304,10 +319,49 @@
         }
     }
 
-    &__logs__item {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        color: #fff;
+    &__logs {
+        &>ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+            gap: 10px;
+        }
+        &__item {
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            
+            &>p {
+                flex: 1;
+                font-size: 1.4em !important;
+                margin: 0;
+                margin-bottom: 20px;
+            }
+            &>h6 {
+                font-size: 0.8em;
+                color: #048b8b;
+                justify-self: self-end;
+                align-self: self-start;
+            }
+            &>div {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                color: #fff;
+                background-color: #023d3d;
+                padding: 10px;
+                border-radius: 5px;
+
+                &>text {
+                    text-wrap: nowrap;
+                    font-size: 0.8em;
+                }
+            }
+            &:hover {
+                cursor: pointer;
+                background-color: #18396e;
+            }
+        }
     }
 }

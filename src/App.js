@@ -13,6 +13,7 @@ import { Admin } from './components/admin/admin'
 import { AuthProvider } from './context/authContext'
 import { ProtectedRoute } from './context/protectedRoute'
 import Presentation from './common/presentation'
+import PopUp from './common/popUp'
 
 function App() {
     const [load, setLoad] = useState(false)
@@ -29,6 +30,7 @@ function App() {
                 <AuthProvider>
                     <Nav />
                     <Lateral />
+                    <PopUp />
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path='/skills' element={<Skills />} />

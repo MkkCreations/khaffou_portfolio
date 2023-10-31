@@ -5,10 +5,12 @@ import UserModal from "./modal/userModal"
 import avatar from "../../assets/images/avatar-90.png"
 import Loader from "../../common/loader"
 import UserPasswordModal from "./modal/userPasswordModal"
+import CreateUserModal from "./modal/createUserModal"
 
 const UserAdmin = () => {
     const { user, profile, loading, setLoading } = useAuth()
     const [activeEdit, setActiveEdit] = useState(false)
+    const [activeNewUser, setActiveNewUser] = useState(false)
     const [activeEditPassword, setActiveEditPassword] = useState(false)
 
     useEffect(() => {
@@ -20,6 +22,7 @@ const UserAdmin = () => {
             <span>
                 <h3>User</h3>
                 <div className="admin-container__user__actions">
+                    <h6 onClick={() => { setActiveNewUser(!activeNewUser) }}>Create User</h6>
                     <h6 onClick={() => { setActiveEditPassword(!activeEditPassword) }}>Change Password</h6>
                     <p onClick={() => { setActiveEdit(!activeEdit) }}>
                         <img src={editIcon} alt="edit" />
@@ -27,6 +30,9 @@ const UserAdmin = () => {
                 </div>
             </span>
 
+            {
+                activeNewUser && <CreateUserModal setIsActive={setActiveNewUser} />
+            }
             {
                 activeEdit && <UserModal setIsActive={setActiveEdit} />
             }

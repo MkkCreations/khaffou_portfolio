@@ -12,6 +12,7 @@
 @import 'portfolio/loader';
 @import 'admin/admin';
 @import 'admin/modal';
+@import 'common/popUp.scss';
 
 
 #root {
@@ -48,6 +49,10 @@ h3 {
 }
 
 @media screen and (max-width: 760px) {
+    div .lateral {
+        display: none;
+
+    }
 
     div .home-container {
         width: 85%;
@@ -106,11 +111,6 @@ h3 {
 }
 
 @media screen and (max-width: 550px) {
-    div .lateral {
-        display: none;
-
-    }
-
     div .home-container {
         width: 100%;
     }

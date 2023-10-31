@@ -76,6 +76,7 @@ export const Login = () => {
                             required
                         />
                     </div>
+                    <p>Just to see: <b>username:</b> user, <b>password:</b> useradmin</p>
                     <button
                         type='submit'
                         className='login-container__form__button'

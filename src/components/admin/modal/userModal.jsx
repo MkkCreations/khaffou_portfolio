@@ -4,7 +4,7 @@ import { USER_URL } from "../../../constants/httpConstants"
 import deleteIcon from "../../../assets/images/basura-50.png"
 
 const UserModal = ({ setIsActive }) => {
-    const { http, user } = useAuth()
+    const { http, user, setError, setMessage } = useAuth()
 
     const [form, setForm] = React.useState({
         image: user.image,
@@ -43,8 +43,11 @@ const UserModal = ({ setIsActive }) => {
         await http.put(USER_URL + `/${user.id}`, form)
             .then(res => {
                 setIsActive(false)
+                setMessage("User updated successfully")
             })
-            .catch(err => {console.log(err)})
+            .catch(err => {
+                setError(err.message)
+            })
     }
 
     return (

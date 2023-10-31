@@ -7,7 +7,7 @@ import { useAuth } from "../../context/authContext"
 import Loader from "../../common/loader"
 
 export const Skills = () => {
-    const { http, user } = useAuth()
+    const { http, user, setError } = useAuth()
     const [load, setLoad] = useState(false)
     const [loading, setLoading] = useState(false)
     const skills = useSelector(skillsSelector)
@@ -22,6 +22,8 @@ export const Skills = () => {
                 setLoad(false)
             })
             .catch(err => {
+                setLoading(false)
+                setError(err.message)
                 console.log(err)
             })
     }

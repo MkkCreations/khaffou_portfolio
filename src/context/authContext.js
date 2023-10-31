@@ -16,6 +16,9 @@ export function AuthProvider({children}) {
     const [user, setUser] = useState(null)
     const [token, setToken] = useState(localStorage.getItem('token')? localStorage.getItem('token') : '')
     const [refreshToken, setRefreshToken] = useState(localStorage.getItem('refreshToken')? localStorage.getItem('refreshToken') : '')
+    const [error, setError] = useState(null)
+    const [message, setMessage] = useState(null)
+    const navigate = useNavigate()
 
     const http = axios.create({
         baseURL: process.env.REACT_APP_API_URL,
@@ -25,9 +28,6 @@ export function AuthProvider({children}) {
           "Authorization": "Bearer " + token
         }
     })
-      
-    const [error, setError] = useState(null)
-    const navigate = useNavigate()
 
     const signup = (data) => {
 
@@ -46,10 +46,12 @@ export function AuthProvider({children}) {
                 localStorage.setItem('token', token)
                 localStorage.setItem('refreshToken', refreshToken)
                 setLoading(false)
+                setMessage("Login successful")
                 navigate('/admin')
             })
             .catch(err => {
                 console.log(err)
+                setError(err.message)
             })
     }
 
@@ -61,7 +63,7 @@ export function AuthProvider({children}) {
                 setLoading(false)
             })
             .catch(err => {
-                console.log(err)
+                setError(err.message)
                 refresh()
             })
     }
@@ -82,9 +84,9 @@ export function AuthProvider({children}) {
                 localStorage.setItem('token', token)
                 localStorage.setItem('refreshToken', refreshToken)
                 setLoading(false)
+                setMessage("Session refreshed")
             })
             .catch(err => {
-                console.log(err)
                 localStorage.removeItem('token')
                 setError(err.message)
             })
@@ -103,17 +105,17 @@ export function AuthProvider({children}) {
                 setRefreshToken('')
                 localStorage.removeItem('token')
                 localStorage.removeItem('refreshToken')
+                setMessage("Logout successful")
                 navigate('/login')
             })
             .catch(err => {
-                console.log(err)
                 setError(err.message)
             })
     }
 
     return (
         
-        <authContext.Provider value={{signup, login, profile, logout, setLoading, loading, http, user, token, refreshToken, error}}>
+        <authContext.Provider value={{signup, login, profile, logout, setLoading, setError, setMessage, loading, http, user, token, refreshToken, error, message}}>
             {children}
         </authContext.Provider>
     )

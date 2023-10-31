@@ -48,7 +48,7 @@ const Log = ({log}) => {
                 <h6>Last changes:</h6>
                 <div>
                     <strong>{log.operations[log.operations.length - 1].info}</strong>
-                    <text style={{color: "green"}}>[ {log.operations.reverse()[0].date} ] </text>
+                    <text style={{color: "green"}}>[ {log.operations[log.operations.length - 1].date} ] </text>
                 </div>
             </li>
         </>

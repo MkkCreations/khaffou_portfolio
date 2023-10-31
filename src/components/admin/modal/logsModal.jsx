@@ -8,7 +8,7 @@ const LogsModal = ({ setIsActive, log }) => {
                     <h3>{log.name} logs</h3>
                     <ul>
                         {
-                            log.operations.reverse().map((operation, i) => 
+                            log.operations.map((operation, i) => 
                                 <li key={i}>
                                     <strong>{operation.info}</strong>
                                     <text style={{color: "green"}}>[ {operation.date} ] </text>

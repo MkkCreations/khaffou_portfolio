@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useAuth } from "../../../context/authContext"
 import { USER_URL } from "../../../constants/httpConstants"
 import deleteIcon from "../../../assets/images/basura-50.png"
@@ -6,7 +6,7 @@ import deleteIcon from "../../../assets/images/basura-50.png"
 export const ResumeModal = ({ setIsActive }) => {
     const { http, user } = useAuth()
 
-    const [form, setForm] = React.useState({
+    const [form, setForm] = useState({
         image: user.image,
         username: user.username,
         name: user.name,
@@ -73,7 +73,8 @@ export const ResumeModal = ({ setIsActive }) => {
                         </div>
                         <input 
                             type="file" 
-                            name="resume" 
+                            name="resume"
+                            id="iamge"
                             onChange={handleChange}
                         />
                     </div>

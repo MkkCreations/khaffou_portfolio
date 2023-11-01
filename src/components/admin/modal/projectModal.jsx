@@ -85,6 +85,7 @@ const ProjectModal = ({project = null, setIsActive}) => {
                         <input 
                             type="text" 
                             name="title" 
+                            id="title"
                             value={form.title} 
                             onChange={handleChange} 
                             required
@@ -94,6 +95,7 @@ const ProjectModal = ({project = null, setIsActive}) => {
                         <label htmlFor="description">Description</label>
                         <textarea 
                             name="description" 
+                            id="description"
                             value={form.description} 
                             onChange={handleChange} 
                             required
@@ -128,6 +130,7 @@ const ProjectModal = ({project = null, setIsActive}) => {
                         <input 
                             type="file" 
                             name="images" 
+                            id="images"
                             onChange={handleChange} 
                             multiple
                         />
@@ -137,6 +140,7 @@ const ProjectModal = ({project = null, setIsActive}) => {
                         <input
                             type="text"
                             name="stack"
+                            id="stack"
                             value={form.stack}
                             onChange={handleChange}
                             required
@@ -146,7 +150,8 @@ const ProjectModal = ({project = null, setIsActive}) => {
                         <label htmlFor="url">URL</label>
                         <input 
                             type="text" 
-                            name="url" 
+                            name="url"
+                            id="url"
                             defaultValue={form.url} 
                             onChange={handleChange}
                         />
@@ -155,7 +160,8 @@ const ProjectModal = ({project = null, setIsActive}) => {
                         <label htmlFor="github">Github</label>
                         <input 
                             type="text" 
-                            name="github" 
+                            name="github"
+                            id="github"
                             defaultValue={form.github} 
                             onChange={handleChange}
                         />

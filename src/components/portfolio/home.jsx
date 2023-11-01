@@ -45,7 +45,7 @@ export const Home = () => {
                     <div className='home-container__left-side'>
                         <p>Welcome to my website</p>
                         <h1>{userData.name}</h1>
-                        <h2>Web Developer <h3>(Full-Stack)</h3></h2>
+                        <h2>Web Developer <p>(Full-Stack)</p></h2>
                         <p>{userData.bio}</p>
                         <Link to='/projects' type="button" className="home-container__left-side__btn">Check out my projects!</Link>
                     </div>

@@ -65,8 +65,9 @@ const SkillModal = ({skill = null, setIsActive}) => {
                     <div className="modal__container__form__input-container">
                         <label htmlFor="name">Name</label>
                         <input 
-                            type="text" 
-                            name="name" 
+                            type="text"
+                            name="name"
+                            id="name"
                             value={form.name} 
                             onChange={handleChange} 
                             required
@@ -76,6 +77,7 @@ const SkillModal = ({skill = null, setIsActive}) => {
                         <label htmlFor="description">Description</label>
                         <textarea 
                             name="description" 
+                            id="description"
                             value={form.description} 
                             onChange={handleChange} 
                             required
@@ -107,6 +109,7 @@ const SkillModal = ({skill = null, setIsActive}) => {
                         <input 
                             type="file" 
                             name="icon" 
+                            id="icon"
                             onChange={handleChange}
                             required={skill ? false : true}
                         />

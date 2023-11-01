@@ -1,7 +1,7 @@
 .skills-container {
     display: inline-flex;
     width: calc(95vw - 160px);
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 150px);
     margin-left: auto;
     flex-direction: column;
     justify-content: flex-start;
@@ -49,9 +49,9 @@
         align-items: center;
         overflow-x: scroll;
         overflow-y: hidden;
-        margin-bottom: 100px;
         width: calc(95vw - 160px);
         height: 45vh;
+        
         &::-webkit-scrollbar {
             display: none;
         }
@@ -102,7 +102,7 @@
                 visibility: hidden;
             }
             &:hover {
-                height:86%;
+                height: 86%;
                 background-color: unset;
             }
             &:hover &__img {

@@ -44,21 +44,24 @@ const CreateUserModal = ({ setIsActive }) => {
                     <h3>Create User</h3>
                     <div className="modal__container__form__input-container">
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" onChange={handleChange} value={form.username} required />
+                        <input type="text" name="username" id="username" onChange={handleChange} value={form.username} required />
                     </div>
                     <div className="modal__container__form__input-container">
                         <label htmlFor="name">Name</label>
-                        <input type="text" name="name" onChange={handleChange} value={form.name} required />
+                        <input type="text" name="name" id="name" onChange={handleChange} value={form.name} required />
                     </div>
                     <div className="modal__container__form__input-container">
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" onChange={handleChange} value={form.email} required />
+                        <input type="email" name="email" id="email" onChange={handleChange} value={form.email} required />
                     </div>
                     <div className="modal__container__form__input-container">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" onChange={handleChange} value={form.password} required />
+                        <input type="password" name="password" id="password" onChange={handleChange} value={form.password} required />
                     </div>
-                    <button className="modal__container__form__submit">Create</button>
+                    <div className="modal__container__form__input-container">
+                        <button type="button" onClick={() => setIsActive(false)}>Cancel</button>
+                        <button type="submit">Create</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -1,12 +1,12 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/authContext"
 import CryptoJS from "crypto-js"
 
 export const Login = () => {
     const {token} = useAuth()
-    const [isActive, setIsActive] = React.useState(false)
-    const [form, setForm] = React.useState({
+    const [isActive, setIsActive] = useState(false)
+    const [form, setForm] = useState({
         username: '',
         password: ''
     })
@@ -60,6 +60,7 @@ export const Login = () => {
                         <input
                             type='text'
                             name='username'
+                            id="username"
                             value={form.username}
                             onChange={handleChange}
                             required
@@ -71,6 +72,7 @@ export const Login = () => {
                         <input
                             type='password'
                             name='password'
+                            id="password"
                             value={form.password}
                             onChange={handleChange}
                             required

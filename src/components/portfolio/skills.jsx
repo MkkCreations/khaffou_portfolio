@@ -28,6 +28,11 @@ export const Skills = () => {
             })
     }
 
+    const scrollToLeft = (id) => {
+        const element = document.getElementById(id)
+        element.scrollIntoView({ behavior: "smooth", inline: "center" })
+    }
+
     useEffect(() => {
         if (skills.length === 0) fetchSkills()
     }, [])
@@ -44,6 +49,15 @@ export const Skills = () => {
                         <span>
                             <a download={"resume.pdf"} id="pdflink" href={user ? user.resume : "/"} >Resume</a>
                         </span>
+                        <div className="skills-container__names">
+                            {
+                                skills.map((skill, i) =>
+                                    <p key={i} onClick={() => scrollToLeft(skill.id)}>
+                                        {skill.name}
+                                    </p>
+                                )
+                            }
+                        </div>
                         <section className="skills-container__skills">
                             {skills.map((skill, i) => <Skill key={i} skill={skill} />)}
                         </section>
@@ -55,7 +69,7 @@ export const Skills = () => {
 
 const Skill = ({ skill }) => {
     return (
-        <div className="skills-container__skills__item">
+        <div className="skills-container__skills__item" id={skill.id}>
             <div>
                 <img className="skills-container__skills__item__img" src={skill.icon} alt={skill.name} />
             </div>

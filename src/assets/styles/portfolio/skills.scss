@@ -41,6 +41,32 @@
         }
     }
 
+    &__names{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        width: 80%;
+        margin: 20px;
+
+        &>p {
+            color: #b9cfea;
+            font-size: 0.7em;
+            font-family: 'Fredoka', sans-serif;
+            margin: 2px;
+            padding: 5px;
+            border-radius: 8px;
+            border: 1px solid #048b8b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: #64ffda;
+                color: black;
+            }
+        
+        }
+    }
     &__skills {
         grid-column: 1;
         grid-row: 2;
@@ -50,7 +76,7 @@
         overflow-x: scroll;
         overflow-y: hidden;
         width: calc(95vw - 160px);
-        height: 45vh;
+        height: 55vh;
         
         &::-webkit-scrollbar {
             display: none;
@@ -102,11 +128,12 @@
                 visibility: hidden;
             }
             &:hover {
-                height: 86%;
+                height: 70%;
                 background-color: unset;
             }
             &:hover &__img {
                 width: 20%;
+                max-width: 80px;
                 position: absolute;
                 top: -10%;
                 left: 50%;
